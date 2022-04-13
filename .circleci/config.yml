@@ -1,0 +1,21 @@
+version: 2.1
+
+jobs:
+  my-fancy-job:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - run:
+          name: Verify
+          command: |
+            echo "Hello, I am triggered from workflow ID: ${CIRCLE_WORKFLOW_ID}, and on branch: ${CIRCLE_BRANCH}"
+
+workflows:
+  manually-triggered:
+    when:
+      and:
+        - equal: [ "api", << pipeline.trigger_source >> ]
+        - equal: [ "release", << pipeline.git.branch >> ]
+    jobs:
+      - my-fancy-jobs
