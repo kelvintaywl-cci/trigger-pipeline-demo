@@ -7,6 +7,7 @@ jobs:
     resource_class: small
     steps:
       - run:
+          # for built-in env vars, see https://circleci.com/docs/2.0/env-vars/#built-in-environment-variables
           name: Verify
           command: |
             echo "Hello, I am triggered from workflow ID: ${CIRCLE_WORKFLOW_ID}, and on branch: ${CIRCLE_BRANCH}"
@@ -14,8 +15,9 @@ jobs:
 workflows:
   manually-triggered:
     when:
+      # for pipeline values, see https://circleci.com/docs/2.0/pipeline-variables/#pipeline-values
       and:
         - equal: [ "api", << pipeline.trigger_source >> ]
         - equal: [ "release", << pipeline.git.branch >> ]
     jobs:
-      - my-fancy-jobs
+      - my-fancy-job
