@@ -28,7 +28,7 @@ $ curl --request POST \
 
 Option 2: via UI
 
-1. Go to the project dashboard itself, e.g.
+1. Go to the project dashboard itself, e.g. https://app.circleci.com/pipelines/github/kelvintaywl-cci/trigger-pipeline-demo
 2. Click on `Trigger Pipeline` button, and fill in pipeline parameters as required.
 3. Trigger the pipeline, and verify the workflow and jobs have started.
 
